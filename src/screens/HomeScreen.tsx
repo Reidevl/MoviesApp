@@ -1,11 +1,22 @@
-import React, { useEffect } from 'react'
-import { ActivityIndicator, Button, Text, View } from 'react-native'
-import { useMovies } from '../hooks/useMovies'
+import React from 'react'
+import { ActivityIndicator, Dimensions,  ScrollView, View } from 'react-native'
+
+import Carousel from 'react-native-snap-carousel';
+
 import { MoviePoster } from '../components/MoviePoster'
+import { useMovies } from '../hooks/useMovies'
+import { HorizontalSlider } from '../components/HorizontalSlider';
+
+const { width: windowWith } = Dimensions.get('window')
 
 export const HomeScreen = () => {
 
-  const { peliculasEnCine, isLoading } = useMovies();
+  const { 
+    nowPlaying, 
+    popular,
+    topRated,
+    upcoming,
+    isLoading } = useMovies();
 
   if ( isLoading ) {
     return (
@@ -18,13 +29,38 @@ export const HomeScreen = () => {
       </View>
     )
   }
-
-
   return (
-    <View>
-      <MoviePoster
-        movie={peliculasEnCine[4]}
-      />
-   </View>
+    <ScrollView>
+      <View>
+        {/* Carrousel Principal */}
+        <View style={{ height: 440 }}>
+          <Carousel
+            data={ nowPlaying }
+            renderItem={ ({ item }: any) => <MoviePoster movie={ item }/>}
+            sliderWidth={ windowWith }
+            itemWidth={ 300 }
+          />
+        </View>
+
+        {/* Peliculas Populares */}
+        <HorizontalSlider
+          title='Popular'
+          movies= { popular }
+        />
+
+        {/* Peliculas Top Rated */}
+        <HorizontalSlider
+          title='Top Rated'
+          movies= { topRated }
+        />
+
+        {/* Peliculas Upcoming */}
+        <HorizontalSlider
+          title='Upcoming'
+          movies= { upcoming }
+        />
+      </View>
+    </ScrollView>
+    
   )
 }
