@@ -52,7 +52,7 @@ export const MovieDetails = ({ movieFull, cast }: Props) => {
         {/* Casting */}
 
         <View style={{ marginTop: 10, marginHorizontal: 20, marginBottom: 100 }}>
-            <Text style={{ fontSize:23, marginTop:10, fontWeight:'bold' }}>
+            <Text style={{ fontSize: 23, marginTop: 10, fontWeight: 'bold' }}>
                 Actores
             </Text>
             <FlatList
