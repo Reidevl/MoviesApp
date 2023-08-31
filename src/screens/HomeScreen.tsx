@@ -22,8 +22,8 @@ export const HomeScreen = () => {
     return (
       <View style={{ 
         flex: 1,
-        alignContent: 'center'
-        ,justifyContent: 'center'
+        alignContent: 'center',
+        justifyContent: 'center'
       }}>
         <ActivityIndicator color='red' size={ 100 } />
       </View>
@@ -53,7 +53,7 @@ export const HomeScreen = () => {
           title='Top Rated'
           movies= { topRated }
         />
-
+        
         {/* Peliculas Upcoming */}
         <HorizontalSlider
           title='Upcoming'

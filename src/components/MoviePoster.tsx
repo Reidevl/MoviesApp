@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Movie} from '../interfaces/movies.interface';
 import {useNavigation} from '@react-navigation/native';
-import { StackScreenProps } from '@react-navigation/stack';
+import {StackScreenProps} from '@react-navigation/stack';
 
 interface Props {
   movie: Movie;
@@ -17,12 +17,14 @@ export const MoviePoster = ({movie, height = 420, width = 300}: Props) => {
 
   return (
     <TouchableOpacity
-      onPress={ () => navigation.navigate('DetailScreen', movie)}
+      onPress={() => navigation.navigate('DetailScreen', movie)}
       activeOpacity={0.8}
       style={{
         width,
         height,
-        marginHorizontal: 8,
+        marginHorizontal: 2,
+        paddingBottom: 20,
+        paddingHorizontal: 7,
       }}>
       <View style={styles.imageContainer}>
         <Image source={{uri}} style={styles.image} />
